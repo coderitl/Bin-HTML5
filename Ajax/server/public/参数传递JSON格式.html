@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参数传递 JSON 格式 </title>
+</head>
+
+<body>
+    <script>
+
+        // 1. 创建Ajax对象
+        var xhr = new XMLHttpRequest();
+        // 2. 告诉Ajax亲求地址以及请求方式
+        // 参数1: 请求方式 参数2: 请求地址
+        xhr.open('post', 'http://localhost:3000/json');
+        // 通过请求头告诉服务器端客户端向服务器传递的请求参数格式是 json 
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        // JSON.stringify() 将 json 对象转换为 json 字符串
+        // 3.  发送请求
+        xhr.send(JSON.stringify({ name: 'lisi', age: 50 }));
+        // 4. 获取服务器端给与客户端的响应数据
+        xhr.onload = function () {
+            console.log(xhr.responseText);
+        }
+    </script>
+</body>
+
+</html>

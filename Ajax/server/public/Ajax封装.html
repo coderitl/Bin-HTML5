@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax函数封装</title>
+</head>
+
+<body>
+    <div>
+        <h1> Ajax函数封装</h1>
+    </div>
+    <script>
+        function ajax(options) {
+            // 创建 Ajax 对象
+            var xhr = new XMLHttpRequest();
+            // 配置 Ajax 对象
+            xhr.open(options.type, options.url);
+            // 发送请求
+            xhr.send();
+            // 监听 xhr 下面的 onload 事件
+            // 当 xhr 对象接受完响应数据后触发
+            xhr.onload = function () {
+                options.success(xhr.responseText);
+            }
+        }
+        // 调用 ajax()
+        ajax({
+            // 请求类型
+            type: 'get',
+            // 请求地址
+            url: 'http://localhost:3000/responseData',
+            success: function (data) {
+                console.log('获取参数: ' + data);
+            }
+        })
+
+    </script>
+</body>
+
+</html>

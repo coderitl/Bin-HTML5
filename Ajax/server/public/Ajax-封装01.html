@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax函数封装</title>
+</head>
+
+<body>
+    <div>
+        <h1> Ajax函数封装</h1>
+    </div>
+    <script>
+        function ajax(options) {
+            // 创建 Ajax 对象
+            var xhr = new XMLHttpRequest();
+            // 传递参数
+            var params = '';
+            // 遍历参数 对象用 for in
+            for (var attr in options.data) {
+                console.log(attr);
+                // 将参数转换为字符串格式
+                params += attr + '=' + options.data[attr] + '&';
+            }
+            // 将参数最后面的 & 截取掉
+            // 将截取的结果重新赋值给 params 变量
+            params = params.substr(0, params.length - 1);
+            // 判断请求格式
+            if (options.type == 'get') {
+                options.url = options.url + '?' + params;
+            }
+            // 配置 Ajax 对象
+            xhr.open(options.type, options.url);
+            if (options.type == 'post') {
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send(params);
+            } else {
+                xhr.send();
+            }
+            // 监听 xhr 下面的 onload 事件
+            // 当 xhr 对象接受完响应数据后触发
+            xhr.onload = function () {
+                options.success(xhr.responseText);
+            }
+        }
+        // 调用 ajax()
+        ajax({
+            // 请求类型
+            type: 'get',
+            data: {
+                name: 'zs',
+                age: 20
+            },
+            // 请求地址
+            url: 'http://localhost:3000/first',
+            success: function (data) {
+                console.log('获取参数: ' + data);
+            }
+        })
+
+    </script>
+</body>
+
+</html>
