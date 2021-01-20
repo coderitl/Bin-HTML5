@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax函数封装</title>
+</head>
+
+<body>
+    <div>
+        <h1> Ajax函数封装</h1>
+    </div>
+    <script>
+        function ajax(options) {
+            // 创建 Ajax 对象
+            var xhr = new XMLHttpRequest();
+            // 传递参数
+            var params = '';
+            // 遍历参数 对象用 for in
+            for (var attr in options.data) {
+                console.log(attr);
+                // 将参数转换为字符串格式
+                params += attr + '=' + options.data[attr] + '&';
+            }
+            // 将参数最后面的 & 截取掉
+            // 将截取的结果重新赋值给 params 变量
+            params = params.substr(0, params.length - 1);
+            // 判断请求格式
+            if (options.type == 'get') {
+                options.url = options.url + '?' + params;
+            }
+            // 配置 Ajax 对象
+            xhr.open(options.type, options.url);
+            // 如果请求方式为 post
+            if (options.type == 'post') {
+                // 用户希望的向服务器传递的请求参数的类型
+                var contentType = options.header['Content-Type'];
+                xhr.setRequestHeader('Content-Type', contentType);
+                // 判断用户希望的请求参数格式的类型
+                // 如果用户希望为 json
+                if (contentType == 'application/json') {
+                    // 向服务器端传递 json 数据格式的参数
+                    xhr.send(JSON.stringify(options.data));
+                } else {
+                    // 向服务器传递普通类型的请求参数
+                    xhr.send(params);
+                }
+            } else {
+                xhr.send();
+            }
+            // 监听 xhr 下面的 onload 事件
+            // 当 xhr 对象接受完响应数据后触发
+            xhr.onload = function () {
+                options.success(xhr.responseText, xhr);
+            }
+        }
+        // 调用 ajax()
+        ajax({
+            // 请求类型
+            type: 'get',
+            data: {
+                name: 'zs',
+                age: 20
+            },
+            header: {
+                'Content-Type': 'application/json'
+            },
+            // 请求地址
+            url: 'http://localhost:3000/responseData',
+            success: function (data) {
+                console.log('获取参数: ' + data);
+            }
+        })
+
+    </script>
+</body>
+
+</html>
