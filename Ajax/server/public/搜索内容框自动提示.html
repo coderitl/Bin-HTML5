@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 搜索内容框自动提示.html </title>
+    <style>
+        .box {
+            width: 220px;
+            margin: 100px auto;
+        }
+
+        .list-box {
+            list-style: none;
+            padding: 3px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p> <input type="text" placeholder="请输入关键字" id="search"> </p>
+        <ul class="list-box">
+        </ul>
+    </div>
+    <script src="js/template-web.js"></script>
+    <script type="text/html" id="tpl">
+        {{each result}}
+        <li> {{$value}}</li>
+        {{/each}}
+    </script>
+    <script src="js/ajax.js"></script>
+
+    <script>
+        // 1. 获取 搜索框
+        var searchInput = document.querySelector('#search');
+        // 获取 list-box
+        var listBox = document.querySelector('.list-box');
+        // 存储定时器的变量
+        var timer = null;
+        // 获取输入事件
+        searchInput.oninput = function () {
+            // 清除上一次开启的定时器
+            clearTimeout(timer);
+            // 获取当前输入的内容 
+            var key = this.value;
+            // 如果用户没有在搜索框输入内容
+            if (key.trim().length == 0) {
+                listBox.style.display = 'none';
+                // 阻止程序向下执行
+                return;
+            }
+            // 开启定时器 让请求延迟发送
+            timer = setTimeout(function () {
+                // 发送 Ajax 请求
+                ajax({
+                    type: 'get',
+                    url: 'http://localhost:3000/searchAutoPrompt',
+                    data: {
+                        // 传递的参数 = 输入内容的 value 
+                        key: key
+                    },
+                    success: function (result) {
+                        var html = template('tpl', { result: result });
+                        listBox.innerHTML = html;
+                        listBox.style.display = 'block'
+                    }
+                })
+            }, 800)
+        }
+    </script>
+</body>
+
+</html>
