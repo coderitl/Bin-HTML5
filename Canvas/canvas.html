@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas 基础使用</title>
+    <style></style>
+
+</head>
+
+<body>
+    <!-- 
+        简介: 
+
+     -->
+    <canvas id="tutorial" width="600" height="600">
+        当前的浏览器版本不支持,请升级浏览起器
+    </canvas>
+
+    <script>
+        /* @type {HTMLCanvasElement} */
+        // 获取画布
+        var canvas = document.getElementById('tutorial');
+        // 获取上下文,上下文有两个 2d 的上下文和 3d 的上下文
+        // 所有的图像绘制都是通过 ctx 属性或者 是方法进行设置的，和 canvas 标签没有关系
+        var ctx = canvas.getContext('2d');
+        // 设置颜色
+        ctx.fillStyle = "green";
+        // 绘制正方形
+        // ctx.fillRect(100, 100, 100, 100);
+        // 信号量
+        var left = 100;
+        // 动画过程
+        setInterval(function () {
+            // 清除画布 0,0 代表从什么位置开始清除 600 600 代表清除的宽度和高度
+            ctx.clearRect(0, 0, 600, 600);
+            // 更新信号量
+            left++;
+            // 重新绘制
+            ctx.fillRect(left, 100, 100, 100)
+        }, 5)
+        console.log(canvas);
+    // ###  Canvas 的像素化
+    // 我们使用 canvas 绘制了一个图形,一旦绘制成功了,canvas 就像素化了它们。
+    </script>
+</body>
+
+</html>

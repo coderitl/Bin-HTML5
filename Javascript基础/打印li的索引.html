@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul li {
+            line-height: 40px;
+            margin: 10px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="ul">
+        <li> item 1</li>
+        <li> item 2</li>
+        <li> item 3</li>
+        <li> item 4</li>
+    </ul>
+    <script>
+        // 点击每个 li 显示对应的索引
+        var _ul = document.querySelector('#ul');
+        // 获取子节点
+        var lis = _ul.children;
+        // 方法一
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].setAttribute('index', i)
+            lis[i].onclick = function () {
+                console.log(this.getAttribute('index'));
+            }
+        }
+        // 方法二
+        for (var i = 0; i < lis.length; i++) {
+            (function (i) {
+                lis[i].onclick = function () {
+                    alert(i);
+                }
+            }(i))
+        }
+        // 方法三
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].index = i;
+            lis[i].onclick = function () {
+                console.log(this.index);
+                alert(this.index);
+            }
+        }
+    </script>
+</body>
+
+</html>

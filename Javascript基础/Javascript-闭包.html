@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript-闭包</title>
+</head>
+
+<body>
+    <script>
+        // function test() {
+        //     var arr = [];
+        //     for (var i = 0; i < 10; i++) {
+        //         console.log(i);
+        //         arr[i] = function () {
+        //             console.log(i," ");
+        //             document.write(i + ' ');
+        //         }
+        //     }
+        //     return arr;
+        // }
+
+        // var myArr = test();
+        // for (var j = 0; j < 10; j++) {
+        //     myArr[j]();
+        // }
+
+        function test() {
+            var arr = [];
+            for (var i = 0; i < 10; i++) {
+                console.log(i); // 0 1 2 3 4 5 ···
+                (function (j) {
+                    arr[j] = function () {
+                        console.log(j, " "); // 10 10 10 ···
+                        document.write(j + ' '); // 10 10 ···
+                    }
+                }(i))
+            }
+            return arr;
+        }
+
+        var myArr = test();
+        for (var j = 0; j < 10; j++) {
+            myArr[j](); //  document.write(i + ' ');
+        }
+    </script>
+</body>
+
+</html>

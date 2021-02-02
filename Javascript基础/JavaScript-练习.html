@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript-练习 </title>
+</head>
+
+<body>
+    <script>
+        // 出现次数最多的字符的变量
+        var value = '';
+        // 出现的次数的变量
+        var index = 0;
+        // 原始字符串
+        var str = 'aaabbbcccaaabbbaaabbbbbbbbb';
+        // 把字符串转换为数组
+        var arr = str.split('');
+        // 将数组进行排序 把数组在转换为字符串
+        str = arr.sort().join('');
+        // 正则进行匹配
+        var reg = /(\w)\1+/g;
+        str.replace(reg, function (val, item) {
+            if (index < val.length) {
+                index = val.length;
+                value = item;
+            }
+        })
+        console.log('出现的次数: ' + index, '出现的字符是: ' + value);
+
+        console.log('---------------------------------------------------------------');
+
+        var str1 = 'str';
+        function fun1(str1) {
+            console.log('a: ', str1);
+
+            function str1() {
+                return 'b: str1 fun'
+            }
+            console.log(str1);
+        }
+        fun1();
+
+    </script>
+
+</body>
+
+</html>

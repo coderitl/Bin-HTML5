@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas 填充和绘制</title>
+</head>
+
+<body>
+    <div>
+        <button id="btn1"> 填充矩形 </button>
+        <button id="btn2"> 绘制矩形边框</button>
+        <button id="btn3"> 清除 canvas 画布内容 </button>
+    </div>
+    <canvas id="mycanvas" width="600" height="600">
+        当前浏览器不支持 canvas,请升级浏览器后再浏览
+    </canvas>
+    <script>
+        var canvas = document.getElementById('mycanvas');
+        // 获取 btn 
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var btn3 = document.getElementById('btn3');
+
+        // 获取上下文
+        var ctx = canvas.getContext('2d');
+        btn1.onclick = function () {
+            // 设置填充颜色
+            ctx.fillStyle = 'purple';
+            // 设置填充
+            ctx.fillRect(100, 100, 50, 50);
+        }
+        btn2.onclick = function () {
+            // 绘制边框颜色
+            ctx.strokeStyle = 'purple';
+            // 绘制正方形
+            ctx.strokeRect(300, 100, 50, 50);
+        }
+
+        btn3.onclick = function () {
+            // 清除 canvas 画布内容
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // 绘制正方形
+        }
+
+    </script>
+</body>
+
+</html>

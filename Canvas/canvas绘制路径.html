@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="mycanvas" width="600" height="600">
+        当前浏览器不支持 canvas,请升级浏览器后再浏览
+    </canvas>
+
+    <script>
+        var canvas = document.getElementById('mycanvas');
+        var ctx = canvas.getContext('2d');
+        // 创建一个路径
+        ctx.beginPath();
+        // 移动绘制点
+        ctx.moveTo(100, 100);
+        // 描述行进路径
+        ctx.lineTo(200, 200);
+        ctx.lineTo(400, 180);
+        ctx.lineTo(380, 50);
+        // 封闭路径
+        ctx.closePath();
+        // 绘制不规则的图形
+        ctx.strokeStyle = 'blue';
+        // 没有 Rect 代表绘制
+        ctx.stroke();
+
+        // 填充
+        ctx.fillStyle = 'pink';
+        ctx.fill();
+    </script>
+</body>
+
+</html>5
