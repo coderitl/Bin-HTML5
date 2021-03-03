@@ -3,14 +3,14 @@
     "art-template": "^4.13.2",
     "express": "^4.17.1"
   },
-  "name": "NodeCode",
+  "name": "GET",
   "version": "1.0.0",
-  "main": "art-template.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Bin",
   "license": "ISC",
-  "description": ""
+  "description": "开放静态资源文件目录,使用Express框架,对GET请求参数处理"
 }
