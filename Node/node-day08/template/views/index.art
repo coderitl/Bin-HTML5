@@ -1,4 +1,0 @@
-// 标准语法: 引入头部
-{{include './commen/header.art'}}
-// 原始语法: 引入底部
-<% include('./commen/footer.art') %>
