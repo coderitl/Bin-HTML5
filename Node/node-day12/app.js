@@ -3,7 +3,9 @@ const app = express();
 const bodyParser = require("body-parser");
 
 // 配置 post 获取请求体中间件 配置模板引擎和body-parser 一定要在挂在路由之前
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(bodyParser.json());
 
 // 模板引擎配置 可更改模板文件后缀

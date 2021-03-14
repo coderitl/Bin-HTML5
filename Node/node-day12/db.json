@@ -1,36 +1,57 @@
 {
-  "students": [
-    { "id": 1, "name": "张三", "gender": 1, "age": 12, "hobbies": "打麻将" },
-    { "id": 2, "name": "李四", "gender": 1, "age": 11, "hobbies": "打麻将" },
-    {
-      "id": 3,
-      "name": "宁李恒",
-      "gender": 0,
-      "age": 16,
-      "hobbies": "穿越，打豆豆"
-    },
-    { "id": 4, "name": "苏妲己", "gender": 1, "age": 12, "hobbies": "魅惑" },
-    { "id": 5, "name": "孙悟空", "gender": 0, "age": 20, "hobbies": "保镖" },
-    {
-      "id": 6,
-      "name": "猪八戒",
-      "gender": 0,
-      "age": 48,
-      "hobbies": "打游戏，保镖"
-    },
-    {
-      "id": 7,
-      "name": "白龙马",
-      "gender": 1,
-      "age": 66,
-      "hobbies": "吃草,坐骑"
-    },
-    {
-      "name": "newUser",
-      "gender": "1",
-      "age": "12",
-      "hobbies": "学习",
-      "id": 8
-    }
-  ]
+    "students": [{
+        "id": 1,
+        "name": "宁李恒",
+        "gender": "0",
+        "age": "18",
+        "hobbies": "穿越，打豆豆"
+    }, {
+        "id": 2,
+        "name": "苏妲己",
+        "gender": 1,
+        "age": 12,
+        "hobbies": "魅惑"
+    }, {
+        "id": 3,
+        "name": "宁李恒",
+        "gender": "0",
+        "age": "18",
+        "hobbies": "穿越"
+    }, {
+        "id": 4,
+        "name": "苏妲己",
+        "gender": 1,
+        "age": 12,
+        "hobbies": "魅惑"
+    }, {
+        "id": 5,
+        "name": "孙悟空",
+        "gender": 0,
+        "age": 20,
+        "hobbies": "保镖"
+    }, {
+        "id": 6,
+        "name": "猪八戒",
+        "gender": 0,
+        "age": 48,
+        "hobbies": "打游戏，保镖"
+    }, {
+        "name": "李仕林",
+        "gender": "0",
+        "age": "12",
+        "hobbies": "考状元",
+        "id": 8
+    }, {
+        "name": "木兰",
+        "gender": "1",
+        "age": "12",
+        "hobbies": "IT",
+        "id": 9
+    }, {
+        "name": "admin",
+        "gender": "1",
+        "age": "32",
+        "hobbies": "学习",
+        "id": 10
+    }]
 }

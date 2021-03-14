@@ -44,12 +44,49 @@ router.post("/new", (req, res) => {
 });
 
 // 渲染编辑页面
-router.get("/edit", (req, res) => {});
+router.get("/edit", (req, res) => {
+  // 在客户端的列表页中处理链接问题(需要 id 参数)
+  // 获取要编辑的学生的 id
+  // 渲染编辑页面
+  let id = parseInt(req.query.id);
+  Student.findById(id, (err, student) => {
+    if (err) {
+      return res.status(500).send("Server error");
+    } else {
+      res.render('edit.html', {
+        student: student
+      });
+    }
+  });
+});
 
 // 处理编辑请求
-router.post("edit", (req, res) => {});
+router.post("/edit", (req, res) => {
+  // 获取表单数据
+  console.log(req.body);
+  // 更新
+  // 发送响应
+  Student.updateById(req.body, (err) => {
+    if (err) {
+      return res.status(500).send("Server error");
+    } else {
+      res.redirect('/students');
+    }
+  });
+});
 
 // 处理删除请求
-router.get("/delete", (req, res) => {});
+router.get("/delete", (req, res) => {
+  // 1. 获取要删除的 id
+  // 2. 根据 id 执行删除操作
+  // 3. 根据操作结果发送响应数据
+  Student.deleteById(req.query.id, (err) => {
+    if (err) {
+      return res.status(500).send("Server error");
+    } else {
+      res.redirect('/students');
+    }
+  });
+});
 
 module.exports = router;
