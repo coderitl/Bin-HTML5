@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// 模板引擎配置
+// 模板引擎配置 可更改模板文件后缀
 app.engine("html", require("express-art-template"));
 
 // 开启静态资源
